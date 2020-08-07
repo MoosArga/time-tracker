@@ -1,0 +1,30 @@
+<configuration>
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>
+                %d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n
+            </Pattern>
+        </layout>
+    </appender>
+
+    <appender name="TimeTrackerAppender" class="ch.qos.logback.core.FileAppender">
+        <file>time-tracker.log</file>
+        <encoder class="net.logstash.logback.encoder.LogstashEncoder">
+            <fieldNames>
+                <message>[ignore]</message>
+                <thread>[ignore]</thread>
+                <levelValue>[ignore]</levelValue>
+                <version>[ignore]</version>
+            </fieldNames>
+            <timestampPattern>yyyy-MM-dd'T'HH:mm:ss.SSS</timestampPattern>
+        </encoder>
+    </appender>
+
+    <logger name="TimeTrackerLog" level="info" additivity="false">
+        <appender-ref ref="TimeTrackerAppender"/>
+    </logger>
+
+    <root level="info">
+        <appender-ref ref="console"/>
+    </root>
+</configuration>
