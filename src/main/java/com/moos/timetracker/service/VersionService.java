@@ -29,7 +29,6 @@ public class VersionService {
         timeTrackerService.closeStep("get-version", StepEnum.PROCESS_DATA.name());
         result.setReleaseDate(LocalDate.now());
         Thread.sleep(1000);
-        timeTrackerService.closeStep("get-version", StepEnum.API_RESPONSE.name());
         return result;
     }
 

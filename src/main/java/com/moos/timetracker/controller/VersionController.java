@@ -1,5 +1,6 @@
 package com.moos.timetracker.controller;
 
+import com.moos.timetracker.model.StepEnum;
 import com.moos.timetracker.model.Version;
 import com.moos.timetracker.service.TimeTrackerService;
 import com.moos.timetracker.service.VersionService;
@@ -21,6 +22,8 @@ public class VersionController {
     @GetMapping("/version")
     public Version getVersion() throws InterruptedException {
         timeTrackerService.startRecord("get-version");
-        return versionService.getVersion();
+        Version result = versionService.getVersion();
+        timeTrackerService.endRecord("get-version");
+        return result;
     }
 }
